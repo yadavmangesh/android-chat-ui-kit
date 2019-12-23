@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_conversation">
+
+    <fragment
+        android:id="@+id/nav_conversation"
+        android:name="screen.CometChatConversationListScreen"
+        android:label="Conversations"
+        tools:layout="@layout/conversation_screen" />
+
+    <fragment
+        android:id="@+id/nav_user"
+        android:name="screen.CometChatUserListScreen"
+        android:label="Contacts"
+        tools:layout="@layout/fragment_user_list_screen" />
+
+    <fragment
+        android:id="@+id/nav_groups"
+        android:name="screen.CometChatGroupListScreen"
+        android:label="Groups"
+        tools:layout="@layout/fragment_group_list_screen" />
+
+    <fragment
+        android:id="@+id/nav_call"
+        android:label="Calls"/>
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="screen.CometChatUserInfoScreen"
+        android:label="Profile"
+        tools:layout="@layout/fragment_more_info_screen" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:label="Logout"/>
+</navigation>

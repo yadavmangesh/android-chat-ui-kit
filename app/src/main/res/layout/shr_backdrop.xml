@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.button.MaterialButton
+        android:onClick="loadConversations"
+        android:drawableLeft="@drawable/ic_nav_chat"
+        android:drawableTint="@color/textColorWhite"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Conversations" />
+
+    <com.google.android.material.button.MaterialButton
+        android:onClick="loadUsers"
+        android:drawableTint="@color/textColorWhite"
+        android:drawableLeft="@drawable/ic_contacts"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="200dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_height="wrap_content"
+        android:text="Users" />
+
+    <com.google.android.material.button.MaterialButton
+        android:onClick="loadGroups"
+        android:drawableTint="@color/textColorWhite"
+        android:drawableLeft="@drawable/ic_group"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="200dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_height="wrap_content"
+        android:text="Groups" />
+
+    <com.google.android.material.button.MaterialButton
+        android:onClick="loadMoreInfo"
+        android:drawableTint="@color/textColorWhite"
+        android:drawableLeft="@drawable/ic_more"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="200dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_height="wrap_content"
+        android:text="More Info" />
+
+</merge>

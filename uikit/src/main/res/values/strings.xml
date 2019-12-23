@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LiftOff</string>
+    <string name="circle">Circle</string>
+    <string name="rectangle">Rectangle</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+    <string name="user">user</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="group">group</string>
+    <string name="search">Search</string>
+    <string name="user_avatar">User Avatar</string>
+    <string name="conversation">conversation</string>
+
+
+</resources>
