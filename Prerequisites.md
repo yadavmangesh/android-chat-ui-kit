@@ -23,6 +23,6 @@ Before you begin, we strongly recommend you read [CometChat SDK setup](https://p
 To run the sample app one must add `APP_ID`,`API_KEY`,`REGION` in constant class
 
 <img align="center" width="100%" height="auto" 
-src="https://github.com/Inscripts/cometchat-pro-android-ui-kit/blob/cp-314/Screen%20Shot%202019-12-23%20at%209.04.22%20PM.png">
+src="https://github.com/cometchat-pro/android-chat-uikit/blob/master/Screenshot/Screen%20Shot%202019-12-23%20at%2010.13.46%20PM.png">
 
  
