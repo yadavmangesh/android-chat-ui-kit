@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cc_primary">#0099ff</color>
+    <color name="cc_primary_dark">#006ccb</color>
+    <color name="cc_accent">#69c9ff</color>
+    <color name="primaryTextColor">#FF000000</color>
+    <color name="textColorWhite">#FFFFFF</color>
+    <color name="bottom">#FAFAFA</color>
+    <color name="secondaryTextColor">#6b000000</color>
+    <color name="light_grey">#EEEEEE</color>
+    <color name="message_bubble_grey">#e0e0e0</color>
+    <color name="message_text_grey">#757575</color>
+    <color name="menu_background_grey">#40bdbdbd</color>
+    <color name="online_green">#E64CAF50</color>
+
+</resources>
