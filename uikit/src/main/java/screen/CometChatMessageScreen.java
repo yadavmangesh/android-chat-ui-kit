@@ -533,7 +533,7 @@ public class CometChatMessageScreen extends Fragment implements View.OnClickList
             public void onMessagesDelivered(MessageReceipt messageReceipt) {
                 Log.d(TAG, "onMessagesDelivered: " + messageReceipt.toString());
                 if (messageAdapter != null) {
-                    if (messageReceipt.getReceiptType().equals(CometChatConstants.RECEIVER_TYPE_USER)) {
+                    if (messageReceipt.getReceivertype().equals(CometChatConstants.RECEIVER_TYPE_USER)) {
                         if (messageReceipt.getSender().getUid().equals(uid)) {
                             messageAdapter.setDeliveryReceipts(messageReceipt);
                         }
@@ -549,7 +549,7 @@ public class CometChatMessageScreen extends Fragment implements View.OnClickList
             @Override
             public void onMessagesRead(MessageReceipt messageReceipt) {
                 if (messageAdapter != null) {
-                    if (messageReceipt.getReceiptType().equals(CometChatConstants.RECEIVER_TYPE_USER)) {
+                    if (messageReceipt.getReceivertype().equals(CometChatConstants.RECEIVER_TYPE_USER)) {
                         if (messageReceipt.getReceiverId().equals(uid)) {
                             messageAdapter.setReadReceipts(messageReceipt);
                         }
