@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Android Chat UI Kit by yadavmangesh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Android Chat UI Kit</h1>
+      <h2 class="project-tagline">Android Chat UI Kit</h2>
+      <a href="https://github.com/yadavmangesh/android-chat-ui-kit" class="btn">View on GitHub</a>
+      <a href="https://github.com/yadavmangesh/android-chat-ui-kit/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/yadavmangesh/android-chat-ui-kit/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <div>
+    <div>
+        <p align="center">
+        <img align="center" width="auto" height="auto" src="https://github.com/cometchat-pro/android-chat-uikit/blob/master/Screenshot/ui%20main.png">    
+        </p>    
+    </div>    
+</div>
+
+
+
+<h1>
+<a id="what-is-ui-kit" class="anchor" href="#what-is-ui-kit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is UI Kit</h1>
+<p>The UI Kit library is a collection of custom UI Component and UI Screens design to build chat applications within few minutes.
+UI kit is designed to avoid boilerplate code for building UI, it has three different ways to build a chat application with fully customizable UI. It will help developers to build a chat application within using various UI Components.</p>
+<h2>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h2>
+<p>Follow the below-metioned steps for easy setup and seamless integration with UI Kit</p>
+<h3>
+<a id="get-your-application-keys" class="anchor" href="#get-your-application-keys" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get your Application Keys</h3>
+<p><a href="https://app.cometchat.io/">Signup for CometChat</a> and then:</p>
+<ul>
+<li>Create a new app</li>
+<li>Head over to the API Keys section and note the <code>API_Key</code> and <code>App_ID</code> (for Auth Only key)</li>
+</ul>
+<hr>
+<h3>
+<a id="add-the-cometchat-dependency" class="anchor" href="#add-the-cometchat-dependency" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add the CometChat Dependency</h3>
+<p>First, add the repository URL to the <strong>project level</strong> <code>build.gradle</code> file in the repositories block under the allprojects section.</p>
+<div class="highlight highlight-source-groovy"><pre>allprojects {
+  repositories {
+    maven {
+      url <span class="pl-s"><span class="pl-pds">"</span>https://dl.bintray.com/cometchat/pro<span class="pl-pds">"</span></span>
+    }
+  }
+}</pre></div>
+<p>Then, add CometChat to the <strong>app-level</strong> <code>build.gradle</code> file in the dependencies section.</p>
+<div class="highlight highlight-source-groovy"><pre>dependencies {
+  implementation <span class="pl-s"><span class="pl-pds">'</span>com.cometchat:pro-android-chat-sdk:2.0.1<span class="pl-pds">'</span></span>
+}</pre></div>
+<p>Finally, add the below lines android section of the <strong>app-level</strong> Gradle file</p>
+<div class="highlight highlight-source-groovy"><pre>android {
+  compileOptions {
+    sourceCompatibility <span class="pl-k">JavaVersion</span><span class="pl-k">.</span><span class="pl-c1">VERSION_1_8</span>
+    targetCompatibility <span class="pl-k">JavaVersion</span><span class="pl-k">.</span><span class="pl-c1">VERSION_1_8</span>
+  }
+}</pre></div>
+<h3>
+<a id="initialize-cometchat" class="anchor" href="#initialize-cometchat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Initialize CometChat</h3>
+<p>The <code>init()</code> method initializes the settings required for CometChat. We suggest calling the <code>init()</code> method on app startup, preferably in the <code>onCreate()</code> method of the Application class.</p>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-smi">String</span> appID <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>APP_ID<span class="pl-pds">"</span></span>;
+<span class="pl-k">private</span> <span class="pl-smi">String</span> region <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>REGION<span class="pl-pds">"</span></span>;
+
+<span class="pl-smi">AppSettings</span> appSettings<span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-smi">AppSettings</span>.<span class="pl-smi">AppSettingsBuilder</span>()<span class="pl-k">.</span>subscribePresenceForAllUsers()<span class="pl-k">.</span>setRegion(region)<span class="pl-k">.</span>build();
+
+<span class="pl-smi">CometChat</span><span class="pl-k">.</span>init(<span class="pl-c1">this</span>, appID,appSettings, <span class="pl-k">new</span> <span class="pl-smi">CometChat</span>.<span class="pl-k">CallbackListener&lt;<span class="pl-smi">String</span>&gt;</span>() {
+  <span class="pl-k">@Override</span>
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onSuccess</span>(<span class="pl-smi">String</span> <span class="pl-v">successMessage</span>) {
+    <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>, <span class="pl-s"><span class="pl-pds">"</span>Initialization completed successfully<span class="pl-pds">"</span></span>);
+  }
+  <span class="pl-k">@Override</span>
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onError</span>(<span class="pl-smi">CometChatException</span> <span class="pl-v">e</span>) {
+    <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>, <span class="pl-s"><span class="pl-pds">"</span>Initialization failed with exception: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> e<span class="pl-k">.</span>getMessage());
+  }
+});</pre></div>
+<p><strong>Note:</strong>
+Make sure you replace the APP_ID with your CometChat <code>App_ID</code> and <code>REGION</code> with your app region in the above code.</p>
+<h3>
+<a id="log-in-your-user" class="anchor" href="#log-in-your-user" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Log in your User</h3>
+<p>The <code>login()</code> method returns the User object containing all the information of the logged-in user.</p>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-c1">UID</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>SUPERHERO1<span class="pl-pds">"</span></span>;
+<span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-c1">API_KEY</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>API_KEY<span class="pl-pds">"</span></span>;
+
+<span class="pl-smi">CometChat</span><span class="pl-k">.</span>login(<span class="pl-c1">UID</span>, <span class="pl-c1">API_KEY</span> , <span class="pl-k">new</span> <span class="pl-smi">CometChat</span>.<span class="pl-k">CallbackListener&lt;<span class="pl-smi">User</span>&gt;</span>() {
+  <span class="pl-k">@Override</span>
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onSuccess</span>(<span class="pl-smi">User</span> <span class="pl-v">user</span>) {
+    <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>, <span class="pl-s"><span class="pl-pds">"</span>Login Successful : <span class="pl-pds">"</span></span> <span class="pl-k">+</span> user<span class="pl-k">.</span>toString());
+  }
+  <span class="pl-k">@Override</span>
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onError</span>(<span class="pl-smi">CometChatException</span> <span class="pl-v">e</span>) {
+    <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>, <span class="pl-s"><span class="pl-pds">"</span>Login failed with exception: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> e<span class="pl-k">.</span>getMessage());
+  }
+});</pre></div>
+<p><strong>Note :</strong> </p>
+<ul>
+<li>Make sure you replace the <code>API_KEY</code> with your CometChat API Key in the above code.</li>
+<li>We have set up 5 users for testing having UIDs: <code>SUPERHERO1</code>, <code>SUPERHERO2</code>, <code>SUPERHERO3</code>, <code>SUPERHERO4</code> and <code>SUPERHERO5</code>.</li>
+</ul>
+<h2>
+<a id="add-ui-kit-to-your-project" class="anchor" href="#add-ui-kit-to-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add UI Kit to your project</h2>
+<p>After adding necessary dependencies inside your app to integrate UI Kit inside your app. Kindly follow the below steps:</p>
+<ol>
+<li>Simply clone the UI Kit Library from the android-chat-uikit repository.</li>
+<li>Import <code>uikit</code> Module from Module Settings.</li>
+<li>If the Library is added successfully, it will look like mentioned in the below image.</li>
+</ol>
+<img align="center" width="auto" height="auto" src="https://github.com/cometchat-pro/android-chat-uikit/blob/master/Screenshot/Screen%20Shot%202019-12-23%20at%207.37.37%20PM.png">
+<h3>
+<a id="launch-ui-unified" class="anchor" href="#launch-ui-unified" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Launch UI Unified</h3>
+<p>Add the following code snippet in <code>onSuccess</code> of CometChat <code>login</code>.</p>
+<div class="highlight highlight-source-java"><pre>startActivity(<span class="pl-k">new</span> <span class="pl-smi">Intent</span>(<span class="pl-smi">YourActivity</span><span class="pl-k">.</span><span class="pl-c1">this</span>,<span class="pl-smi">CometChatUnified</span><span class="pl-k">.</span>class))
+</pre></div>
+
+<img align="center" width="100%" height="auto" src="https://github.com/cometchat-pro/android-chat-uikit/blob/master/Screenshot/UI%20Unified%20(1).png">
+<p><em>UI Unified is a way to launch a fully working chat application using the UI Kit. In UI Unified all the UI Screens and UI Components working together to give the full experience of a chat application with minimal coding effort.</em></p>
+<h2>
+<a id="next-step" class="anchor" href="#next-step" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Next Step</h2>
+<p>To read the full documentation on UI Kit integration visit our <a href="https://prodocs.cometchat.com/docs/android-ui-kit">Documentation</a></p>
+<h2>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h2>
+<p>Facing any issues while integrating or installing the UI Kit please <a href="https://forum.cometchat.com/"> visit our forum</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/yadavmangesh/android-chat-ui-kit">Android Chat UI Kit</a> is maintained by <a href="https://github.com/yadavmangesh">yadavmangesh</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
